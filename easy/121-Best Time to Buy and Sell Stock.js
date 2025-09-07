@@ -3,14 +3,12 @@
  * @return {number}
  */
 var maxProfit = function(prices) {    
-    let minProfit = prices[0], maxProfit = 0;
+    let minDay = prices[0], maxProfit = 0;
     for (let i = 0; i < prices.length; i++) {
-        if (prices[i] - minProfit > maxProfit) {
-            maxProfit = prices[i] - minProfit;
-        } else {
-            if (minProfit > prices[i])
-                minProfit = prices[i];
-        }   
+        if (maxProfit < prices[i] - minDay)
+            maxProfit = prices[i] - minDay;
+        if (minDay > prices[i])
+            minDay = prices[i];
     }
     return maxProfit;
 };
